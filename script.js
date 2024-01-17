@@ -1,14 +1,18 @@
 let countdown = document.getElementById("countdown");
 let customCountDownDate = document.getElementById("customDate");
-let countDownDate = new Date("Mar 5, 2024 00:00:00").getTime();
-let subtext = "until mystyxx' birthday";
 let subtextHTMLElement = document.getElementById("subtext");
 let untilOrSince = 'until'
 
 if(window.localStorage.getItem("customDate")==undefined && window.localStorage.getItem("customDate")==null){
 	window.localStorage.setItem("customDate", "2024-01-17");
 }
+if(window.localStorage.getItem("customSubText")==undefined && window.localStorage.getItem("customSubText")==null){
+	window.localStorage.setItem("customSubText", "mystyxx\' birthday");}
 document.getElementById("customDate").value = window.localStorage.getItem("customDate");
+document.getElementById("subtextHTMLElementInput").value = window.localStorage.getItem("customSubText");
+
+let countDownDate = new Date(convert(window.localStorage.getItem("customDate"))).getTime();
+let subtext = "until mystyxx' birthday";
 
 
 function showCurrentTime() {
@@ -32,8 +36,9 @@ function showCurrentTime() {
 }
 
 function updateCustomData() {
-	countDownDate = new Date(convert(customCountDownDate.value));
 	localStorage.setItem("customDate", customCountDownDate.value);
+	countDownDate = new Date(convert(customCountDownDate.value));
+	localStorage.setItem("customSubText", subtextHTMLElementInput.value)
     subtextHTMLElement.innerText = untilOrSince + ' ' + subtextHTMLElementInput.value;
 }
 
