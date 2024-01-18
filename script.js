@@ -62,5 +62,17 @@ function convert(){
 	return(temp[1] + ' ' + temp[2] + ', ' + temp[0] + ' 00:00:00');
 }
 
-updateCustomData();
+function showOrHideCustomInput(){
+	if(document.getElementById("customDate").style.visibility == 'visible') {
+		document.getElementById("customDate").style.visibility = 'hidden';
+		document.getElementById("subtextHTMLElementInput").style.visibility = 'hidden';
+	}
+	else{
+		document.getElementById("customDate").style.visibility = 'visible';
+		document.getElementById("subtextHTMLElementInput").style.visibility = 'visible';
+	}
+}
+
+
+showCurrentTime();
 let update = setInterval(showCurrentTime, 1000);
